@@ -14,6 +14,6 @@ void draw() {
   background(255);
   main.draw();
   people.draw();
-  people.move();
+
 
 }

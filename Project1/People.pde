@@ -1,6 +1,6 @@
 class People {
   PImage crouch, happy, running, standing;
-  PVector position;
+  PVector position, target, mousePos;
   float distance;
 
 
@@ -15,16 +15,20 @@ class People {
     running.resize(40, 80);
     standing.resize(40, 80);
     position = new PVector(random(800), random(600));
-    distance = dist(position.x, position.y, mouseX, mouseY);
+    target = new PVector(position.x, position.y);
+    mousePos = new PVector(mouseX, mouseY);
+    
   }
 
   void draw() {
     image(standing, position.x, position.y);
+    move();
   }
 
   void move() {
+    distance = target.dist(mousePos);
     if (distance > 50) {
-      position = position.lerp(position, 0.5);
+      position = position.lerp(position, 0.1);
     }
   }
 }
