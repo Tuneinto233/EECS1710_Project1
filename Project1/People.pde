@@ -17,18 +17,20 @@ class People {
     position = new PVector(random(800), random(600));
     target = new PVector(position.x, position.y);
     mousePos = new PVector(mouseX, mouseY);
-    
+    distance = target.dist(mousePos);
   }
 
   void draw() {
     image(standing, position.x, position.y);
-    move();
+    //it was move();
+    if (distance > 5) {
+      position = position.lerp(position, 0.5);
+    }
   }
 
   void move() {
-    distance = target.dist(mousePos);
-    if (distance > 50) {
-      position = position.lerp(position, 0.1);
+    if (distance > 5) {
+      position = position.lerp(position, 0.5);
     }
   }
 }
